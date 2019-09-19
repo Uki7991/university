@@ -28,6 +28,8 @@ class HomeController extends Controller
         $url = 'http://ed.kyrg.info/category/news-events';
         if ($request->page) {
             $url = $request->page;
+        } else {
+            $url = 'http://ed.kyrg.info/category/news-events/';
         }
         $dom = new Dom();
         $dom->load($url);
