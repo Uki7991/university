@@ -25,8 +25,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $page = 1;
-        $url = 'http://ed.kyrg.info/category/news-events/page/'.$page.'/';
+        $url = 'http://ed.kyrg.info/category/news-events/page/1/';
         if ($request->page) {
             $url = $request->page;
         }
