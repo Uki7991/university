@@ -26,14 +26,16 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $page = 1;
-        if ($request->page) {
-            $page = $request->page;
-        }
         $url = 'http://ed.kyrg.info/category/news-events/page/'.$page.'/';
+        if ($request->page) {
+            $url = $request->page;
+        }
         $dom = new Dom();
         $dom->load($url);
         $h2 = $dom->find('h2.entry-title > a');
         $excerpt = $dom->find('div#contentColumn > p');
+        $prev = $dom->find('div.nav-previous > a');
+        $next = $dom->find('div.nav-next > a');
         $posts = [];
         if (count($h2) == count($excerpt)) {
             for ($i = 0; $i < count($h2); $i++) {
@@ -46,6 +48,8 @@ class HomeController extends Controller
         }
         return view('home', [
             'posts' => $posts,
+            'prev' => isset($prev[0]) ? $prev[0]->href : null,
+            'next' => isset($next[0]) ? $next[0]->href : null,
         ]);
     }
 }
