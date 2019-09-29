@@ -18,5 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/announce', 'HomeController@index2')->name('announce');
 
 Route::get('/post/show', 'PostController@show')->name('post.show');
+Route::get('/announce/show', 'PostController@show2')->name('announce.show');

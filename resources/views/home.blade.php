@@ -21,12 +21,12 @@
     <div class="row">
         @if(isset($prev) && $prev)
             <div class="col-auto mr-auto">
-                <a href="{{ route('home', ['page' => $prev]) }}">&#8592; Предыдущие статьи</a>
+                <a href="{{ request()->fullUrlWithQuery(['page' => $prev]) }}">&#8592; Предыдущие статьи</a>
             </div>
         @endif
         @if(isset($next) && $next)
             <div class="col-auto ml-auto">
-                <a href="{{ route('home', ['page' => $next]) }}">Следующие статьи &#8594;</a>
+                <a href="{{ request()->fullUrlWithQuery(['page' => $next]) }}">Следующие статьи &#8594;</a>
             </div>
         @endif
     </div>
