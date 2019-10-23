@@ -23,6 +23,7 @@ class PostController extends Controller
         $excerpt = $dom->find('div#contentColumn > p');
         $prev = $dom->find('div.nav-previous > a');
         $next = $dom->find('div.nav-next > a');
+        $countPosts = $dom->find('#post_count_t')->value;
         $posts = [];
             for ($i = 0; $i < count($h2); $i++) {
                 $post = new Post();
@@ -35,6 +36,7 @@ class PostController extends Controller
             'posts' => $posts,
             'prev' => isset($prev[0]) ? $prev[0]->href : null,
             'next' => isset($next[0]) ? $next[0]->href : null,
+            'countPosts' => $countPosts,
         ]);
     }
 
@@ -72,6 +74,7 @@ class PostController extends Controller
         $excerpt = $dom->find('div#contentColumn > p');
         $prev = $dom->find('div.nav-previous > a');
         $next = $dom->find('div.nav-next > a');
+        $countPosts = $dom->find('#post_count_t')->value;
         $posts = [];
             for ($i = 0; $i < count($h2); $i++) {
                 $post = new Post();
@@ -84,6 +87,7 @@ class PostController extends Controller
             'posts' => $posts,
             'prev' => isset($prev[0]) ? $prev[0]->href : null,
             'next' => isset($next[0]) ? $next[0]->href : null,
+            'countPosts' => $countPosts,
         ]);
     }
 
