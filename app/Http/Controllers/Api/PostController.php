@@ -24,12 +24,14 @@ class PostController extends Controller
         $prev = $dom->find('div.nav-previous > a');
         $next = $dom->find('div.nav-next > a');
         $countPosts = $dom->find('#post_count_t')->value;
+        $date = $dom->find('.entry-meta > b');
         $posts = [];
             for ($i = 0; $i < count($h2); $i++) {
                 $post = new Post();
                 $post->title = $h2[$i]->text;
                 $post->link = $h2[$i]->href;
                 $post->excerpt = $excerpt[$i]? $excerpt[$i]->text : '';
+                $post->date = $date[$i] ? $date[$i]->text : '';
                 $posts[] = $post;
             }
         return response()->json([
@@ -75,12 +77,14 @@ class PostController extends Controller
         $prev = $dom->find('div.nav-previous > a');
         $next = $dom->find('div.nav-next > a');
         $countPosts = $dom->find('#post_count_t')->value;
+        $date = $dom->find('.entry-meta > b');
         $posts = [];
             for ($i = 0; $i < count($h2); $i++) {
                 $post = new Post();
                 $post->title = $h2[$i]->text;
                 $post->link = $h2[$i]->href;
                 $post->excerpt = $excerpt[$i] ? $excerpt[$i]->text : '';
+                $post->date = $date[$i] ? $date[$i]->text : '';
                 $posts[] = $post;
             }
         return response()->json([
